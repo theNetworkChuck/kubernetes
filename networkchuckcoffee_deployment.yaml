@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: networkchuckcoffee-deployment
+  labels:
+    app: nccoffee
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nccoffee
+  template:
+    metadata:
+      labels:
+        app: nccoffee
+    spec:
+      containers:
+      - name: nccoffee
+        image: thenetworkchuck/nccoffee:pourover
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
